@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">CatatanKeutangan</string>
     <string name="jumlah_seluruh_utang">Jumlah Seluruh Utang :</string>
+    <string name="nama">Nama</string>
+    <string name="jumlah">Jumlah</string>
+    <string name="add">Add</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
 </resources>

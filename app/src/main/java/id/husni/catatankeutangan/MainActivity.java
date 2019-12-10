@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements DebtCallback {
     private static final String EXTRA_STATE = "extraState" ;
     private DebtAdapter debtAdapter;
     private RecyclerView recyclerView;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +45,6 @@ public class MainActivity extends AppCompatActivity implements DebtCallback {
             getSupportActionBar().setSubtitle("Husni :: MicroSystem");
         }
         debtAdapter = new DebtAdapter(this);
-
-        recyclerView = findViewById(R.id.recyclerList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(debtAdapter);
 
         DebtHelper debtHelper = DebtHelper.getInstance(this);
         debtHelper.open();
@@ -68,12 +65,32 @@ public class MainActivity extends AppCompatActivity implements DebtCallback {
 
         allDebt.setText(textJumlah +" "+ String.valueOf(numberFormat.format(debtHelper.getAllValue())));
 
-        FloatingActionButton floatingActionButton = findViewById(R.id.floatingAdd);
+        floatingActionButton = findViewById(R.id.floatingAdd);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddDataActivity.class);
                 startActivityForResult(intent, AppUtilities.REQUEST_CODE_ADD);
+            }
+        });
+
+        recyclerView = findViewById(R.id.recyclerList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(debtAdapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) {
+                    floatingActionButton.hide();
+                } else {
+                    floatingActionButton.show();
+                }
             }
         });
 

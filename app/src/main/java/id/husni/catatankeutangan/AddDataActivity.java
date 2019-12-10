@@ -27,7 +27,6 @@ import static id.husni.catatankeutangan.database.DatabaseContract.DebtColoumn.DE
 public class AddDataActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String EXTRA_DEBT = "extraDebt" ;
     private TextInputEditText edtName, edtValue;
-    private Button btnSubmit;
     private DebtHelper helper;
 
     @Override
@@ -46,7 +45,7 @@ public class AddDataActivity extends AppCompatActivity implements View.OnClickLi
 
         edtName = findViewById(R.id.textAddName);
         edtValue = findViewById(R.id.textAddValue);
-        btnSubmit = findViewById(R.id.submitButton);
+        Button btnSubmit = findViewById(R.id.submitButton);
 
         btnSubmit.setOnClickListener(this);
     }

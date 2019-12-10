@@ -13,11 +13,11 @@ public class CustomItemClick  implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        onCustomItemClick.onItemClicked(view,position);
+        onCustomItemClick.onItemClicked(position);
     }
 
 
     public interface OnCustomItemClick {
-        void onItemClicked(View view, int position);
+        void onItemClicked(int position);
     }
 }

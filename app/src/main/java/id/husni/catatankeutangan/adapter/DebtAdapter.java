@@ -75,7 +75,7 @@ public class DebtAdapter extends RecyclerView.Adapter<DebtAdapter.ViewHolder> {
         holder.tvValue.setText(String.valueOf(numberFormat.format(debtArrayListFull.get(position).getValue())));
         holder.cvItem.setOnClickListener(new CustomItemClick(position, new CustomItemClick.OnCustomItemClick() {
             @Override
-            public void onItemClicked(View view, int position) {
+            public void onItemClicked(int position) {
                 Intent intent = new Intent(activity, EditDataActivity.class);
                 intent.putExtra(EditDataActivity.EXTRA_DEBT, debtArrayListFull.get(position));
                 intent.putExtra(EditDataActivity.EXTRA_POSITION, position);

@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,7 +33,6 @@ import id.husni.catatankeutangan.utilities.AppUtilities;
 public class MainActivity extends AppCompatActivity implements DebtCallback {
 
     private static final String EXTRA_STATE = "extraState" ;
-    private DebtHelper debtHelper;
     private DebtAdapter debtAdapter;
     private RecyclerView recyclerView;
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements DebtCallback {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(debtAdapter);
 
-        debtHelper = DebtHelper.getInstance(this);
+        DebtHelper debtHelper = DebtHelper.getInstance(this);
         debtHelper.open();
 
         if (savedInstanceState == null) {
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements DebtCallback {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList(EXTRA_STATE, debtAdapter.getDebtArrayListFull());
     }
@@ -97,11 +97,6 @@ public class MainActivity extends AppCompatActivity implements DebtCallback {
         MyAsync(DebtHelper debtHelper, DebtCallback debtCallback) {
             debtHelperWeakReference = new WeakReference<>(debtHelper);
             debtCallbackWeakReference = new WeakReference<>(debtCallback);
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
         }
 
         @Override
@@ -122,21 +117,27 @@ public class MainActivity extends AppCompatActivity implements DebtCallback {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == AppUtilities.REQUEST_CODE_ADD) {
             if (resultCode == AppUtilities.RESULT_CODE_ADD) {
-                Debt debt = data.getParcelableExtra(AddDataActivity.EXTRA_DEBT);
-                debtAdapter.insertData(debt);
-                showSnackbar("Data Added");
+                if (data != null) {
+                    Debt debt = data.getParcelableExtra(AddDataActivity.EXTRA_DEBT);
+                    debtAdapter.insertData(debt);
+                    showSnackbar("Data Added");
+                }
             }
         }
         if (requestCode == AppUtilities.REQUEST_CODE_UPDATE) {
             if (resultCode == AppUtilities.RESULT_CODE_UPDATE) {
-                Debt debt = data.getParcelableExtra(EditDataActivity.EXTRA_DEBT);
-                int position = data.getIntExtra(EditDataActivity.EXTRA_POSITION, 0);
-                debtAdapter.updateData(position, debt);
-                showSnackbar("Data Updated");
+                if (data != null) {
+                    Debt debt = data.getParcelableExtra(EditDataActivity.EXTRA_DEBT);
+                    int position = data.getIntExtra(EditDataActivity.EXTRA_POSITION, 0);
+                    debtAdapter.updateData(position, debt);
+                    showSnackbar("Data Updated");
+                }
             } else if (resultCode == AppUtilities.RESULT_CODE_DELETE) {
-                int position = data.getIntExtra(EditDataActivity.EXTRA_POSITION, 0);
-                debtAdapter.deleteData(position);
-                showSnackbar("Data Deleted");
+                if (data != null) {
+                    int position = data.getIntExtra(EditDataActivity.EXTRA_POSITION, 0);
+                    debtAdapter.deleteData(position);
+                    showSnackbar("Data Deleted");
+                }
             }
         }
     }

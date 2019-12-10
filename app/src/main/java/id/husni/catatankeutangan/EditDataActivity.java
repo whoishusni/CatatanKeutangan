@@ -17,7 +17,6 @@ import id.husni.catatankeutangan.database.table.DebtHelper;
 import id.husni.catatankeutangan.model.Debt;
 import id.husni.catatankeutangan.utilities.AppUtilities;
 
-import static android.provider.BaseColumns._ID;
 import static id.husni.catatankeutangan.database.DatabaseContract.DebtColoumn.DEBT_NAME;
 import static id.husni.catatankeutangan.database.DatabaseContract.DebtColoumn.DEBT_VALUE;
 
@@ -27,7 +26,6 @@ public class EditDataActivity extends AppCompatActivity implements View.OnClickL
     public static final String EXTRA_POSITION = "extraPosition" ;
 
     private TextInputEditText edtName, edtValue;
-    private Button btnUpdate;
     private Debt debt;
     private int position;
     private DebtHelper helper;
@@ -54,7 +52,7 @@ public class EditDataActivity extends AppCompatActivity implements View.OnClickL
 
         edtName = findViewById(R.id.textEditName);
         edtValue = findViewById(R.id.textEditValue);
-        btnUpdate = findViewById(R.id.editButton);
+        Button btnUpdate = findViewById(R.id.editButton);
 
         if (debt != null) {
             edtName.setText(debt.getName());

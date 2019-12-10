@@ -1,6 +1,5 @@
 package id.husni.catatankeutangan.database;
 
-import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
 public class DatabaseContract {

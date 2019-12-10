@@ -2,19 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/marginPaddingVertical"
+    android:paddingTop="@dimen/marginPaddingVertical"
+    android:paddingStart="@dimen/marginPaddingHorizontal"
+    android:paddingEnd="@dimen/marginPaddingHorizontal">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvDebtItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginPaddingHorizontal"
-        android:layout_marginTop="@dimen/marginPaddingVertical"
-        android:layout_marginEnd="@dimen/marginPaddingHorizontal"
-        android:layout_marginBottom="@dimen/marginPaddingVertical"
         app:cardCornerRadius="8dp"
-        app:cardElevation="4dp">
+        app:cardElevation="7dp"
+
+        android:background="@android:color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,14 +38,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 tools:text="namaUtang" />
 
             <TextView
                 android:id="@+id/tvValueDebt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="jumlahUtang" />
         </LinearLayout>

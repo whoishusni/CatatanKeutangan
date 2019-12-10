@@ -69,6 +69,7 @@ public class DebtHelper {
 
         if (cursor.moveToFirst()) {
             values = cursor.getInt(cursor.getColumnIndexOrThrow("total"));
+            cursor.close();
         }
         return values;
     }

@@ -84,7 +84,7 @@ public class EditDataActivity extends AppCompatActivity implements View.OnClickL
             setResult(AppUtilities.RESULT_CODE_UPDATE, intent);
             finish();
         } else {
-            Toast.makeText(this, "Gagal update", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.update_failed), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -108,7 +108,7 @@ public class EditDataActivity extends AppCompatActivity implements View.OnClickL
                     setResult(AppUtilities.RESULT_CODE_DELETE, intent);
                     finish();
                 } else {
-                    Toast.makeText(this, "Gagal Delete", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getResources().getString(R.string.delete_failed), Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

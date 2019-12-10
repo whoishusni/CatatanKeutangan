@@ -75,7 +75,7 @@ public class AddDataActivity extends AppCompatActivity implements View.OnClickLi
             setResult(AppUtilities.RESULT_CODE_ADD,intent);
             finish();
         } else {
-            Toast.makeText(this, "Gagal Added", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.added_failed), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -6,4 +6,10 @@
     <string name="add">Add</string>
     <string name="delete">Delete</string>
     <string name="update">Update</string>
+    <string name="data_deleted">Data Deleted</string>
+    <string name="data_updated">Data Updated</string>
+    <string name="data_added">Data Added</string>
+    <string name="update_failed">Update Failed</string>
+    <string name="delete_failed">Delete Failed</string>
+    <string name="added_failed">Added Failed</string>
 </resources>

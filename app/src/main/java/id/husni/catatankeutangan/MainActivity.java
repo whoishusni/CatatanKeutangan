@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements DebtCallback {
                 if (data != null) {
                     Debt debt = data.getParcelableExtra(AddDataActivity.EXTRA_DEBT);
                     debtAdapter.insertData(debt);
-                    showSnackbar("Data Added");
+                    showSnackbar(getResources().getString(R.string.data_added));
                 }
             }
         }
@@ -130,13 +130,13 @@ public class MainActivity extends AppCompatActivity implements DebtCallback {
                     Debt debt = data.getParcelableExtra(EditDataActivity.EXTRA_DEBT);
                     int position = data.getIntExtra(EditDataActivity.EXTRA_POSITION, 0);
                     debtAdapter.updateData(position, debt);
-                    showSnackbar("Data Updated");
+                    showSnackbar(getResources().getString(R.string.data_updated));
                 }
             } else if (resultCode == AppUtilities.RESULT_CODE_DELETE) {
                 if (data != null) {
                     int position = data.getIntExtra(EditDataActivity.EXTRA_POSITION, 0);
                     debtAdapter.deleteData(position);
-                    showSnackbar("Data Deleted");
+                    showSnackbar(getResources().getString(R.string.data_deleted));
                 }
             }
         }

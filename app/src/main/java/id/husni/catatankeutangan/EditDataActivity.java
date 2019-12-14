@@ -68,6 +68,15 @@ public class EditDataActivity extends AppCompatActivity implements View.OnClickL
         String name = edtName.getText().toString();
         String value = edtValue.getText().toString();
 
+        if (name.isEmpty()) {
+            edtName.setError(getResources().getString(R.string.nama_wajib_diisi));
+            return;
+        }
+        if (value.isEmpty()) {
+            edtValue.setError(getResources().getString(R.string.nilai_wajib_diisi));
+            return;
+        }
+
         debt.setName(name);
         debt.setValue(Integer.parseInt(value));
 

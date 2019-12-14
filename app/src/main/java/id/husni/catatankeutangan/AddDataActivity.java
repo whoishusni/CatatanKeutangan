@@ -54,6 +54,14 @@ public class AddDataActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         String name = edtName.getText().toString().trim();
         String value = edtValue.getText().toString().trim();
+        if (name.isEmpty()) {
+            edtName.setError(getResources().getString(R.string.nama_wajib_diisi));
+            return;
+        }
+        if (value.isEmpty()) {
+            edtValue.setError(getResources().getString(R.string.nilai_wajib_diisi));
+            return;
+        }
 
         Debt debt = new Debt();
 

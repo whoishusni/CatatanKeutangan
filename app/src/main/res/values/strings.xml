@@ -12,4 +12,6 @@
     <string name="update_failed">Update Failed</string>
     <string name="delete_failed">Delete Failed</string>
     <string name="added_failed">Added Failed</string>
+    <string name="nama_wajib_diisi">Nama Wajib Di Isi</string>
+    <string name="nilai_wajib_diisi">Nilai Wajib Di Isi</string>
 </resources>
